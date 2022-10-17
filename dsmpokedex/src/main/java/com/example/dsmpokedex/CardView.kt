@@ -1,32 +1,24 @@
 package com.example.dsmpokedex
 
-import androidx.cardview.widget.CardView
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.MaterialTheme
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.NonRestartableComposable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import android.content.Context
+import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import com.google.android.material.card.MaterialCardView
 
-@ExperimentalMaterialApi
-@Composable
-@NonRestartableComposable
-fun PokeCardView() {
-    Card(
-        onClick = { /*TODO*/ },
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(15.dp),
-        elevation = 10.dp,
-        shape = RoundedCornerShape(15.dp),
-        backgroundColor = MaterialTheme.colors.surface
-    ) {
-//
+class PokeCardView : MaterialCardView {
+    constructor(
+        context: Context
+    ) : super(context) {
+        initialization()
+    }
+
+    private fun initialization() {
+        val pokeballImage = R.drawable.pokeball
+        val imageView = ImageView(context)
+
+        strokeColor = ContextCompat.getColor(context, R.color.white)
+        strokeWidth = 2
+
+        imageView.setImageDrawable(context.getDrawable(pokeballImage))
     }
 }
-
