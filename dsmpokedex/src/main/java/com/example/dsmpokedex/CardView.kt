@@ -28,8 +28,8 @@ class PokeCardView : MaterialCardView {
         strokeColor = ContextCompat.getColor(context, R.color.white)
         strokeWidth = 2
 
-        imageView.layoutParams.height = 30
-        imageView.layoutParams.width = 30
+//        imageView.layoutParams.height = 30
+//        imageView.layoutParams.width = 30
         imageView.setImageDrawable(context.getDrawable(pokeballImage))
 
         val params = imageView.layoutParams as ConstraintLayout.LayoutParams
@@ -37,6 +37,5 @@ class PokeCardView : MaterialCardView {
         params.topToTop = ConstraintLayout.LayoutParams.UNSET
         params.bottomToBottom = this.id
         this.requestLayout()
-
     }
 }
