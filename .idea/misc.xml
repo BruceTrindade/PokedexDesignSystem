@@ -4,9 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/xml/layout.xml" value="0.24479166666666666" />
+        <entry key="dsmpokedex/src/main/res/drawable/background_poke.xml" value="0.149" />
         <entry key="dsmpokedex/src/main/res/drawable/ic_launcher_background.xml" value="0.1755" />
         <entry key="dsmpokedex/src/main/res/layout/activity_main.xml" value="0.24583333333333332" />
-        <entry key="dsmpokedex/src/main/res/layout/card_view_poke.xml" value="0.446480231436837" />
+        <entry key="dsmpokedex/src/main/res/layout/card_view_poke.xml" value="0.5" />
         <entry key="dsmpokedex/src/main/res/layout/fragment_first.xml" value="0.37604166666666666" />
         <entry key="dsmpokedex/src/main/res/layout/fragment_second.xml" value="0.1953125" />
       </map>
