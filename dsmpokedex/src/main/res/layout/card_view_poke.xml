@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
     android:layout_marginEnd="8dp"
-    android:elevation="4dp"
-    android:clipChildren="true"
-    app:cardCornerRadius="12dp">
+    android:layout_marginBottom="8dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp">
 
         <ImageView
             android:layout_width="110dp"
             android:layout_height="70dp"
             android:layout_gravity="end"
-            android:layout_marginEnd="-30dp"
             android:layout_marginTop="36dp"
+            android:layout_marginEnd="-30dp"
             android:alpha="0.25"
-            android:src="@drawable/pokeball"/>
+            android:src="@drawable/pokeball" />
 
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+
+
+</FrameLayout>

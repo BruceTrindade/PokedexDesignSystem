@@ -33,7 +33,6 @@ class MainActivity : ComponentActivity() {
                         Greeting("Android")
                         PokeBallBackground(text = "Pikachu")
                     }
-
                 }
             }
         }
