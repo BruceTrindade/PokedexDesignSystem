@@ -9,16 +9,14 @@
     android:layout_marginBottom="8dp"
     android:layout_marginEnd="8dp"
     android:elevation="4dp"
-    app:cardCornerRadius="12dp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    android:clipChildren="true"
+    app:cardCornerRadius="12dp">
 
         <ImageView
             android:layout_width="110dp"
-            android:layout_height="100dp"
+            android:layout_height="70dp"
             android:layout_gravity="end"
-            android:layout_marginEnd="-16dp"
+            android:layout_marginEnd="-30dp"
             android:layout_marginTop="36dp"
             android:alpha="0.25"
             android:src="@drawable/pokeball"/>
