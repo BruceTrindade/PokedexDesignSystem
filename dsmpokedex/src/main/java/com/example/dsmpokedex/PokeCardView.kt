@@ -16,8 +16,6 @@ class CardViewPoke @JvmOverloads constructor(
     private val binding = CardViewPokeBinding
         .inflate(LayoutInflater.from(context), this, true)
 
-
-
     fun setPokeName(text: String) {
         binding.pokemonName.text = text
     }
