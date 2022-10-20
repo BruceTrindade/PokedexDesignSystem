@@ -1,10 +1,12 @@
 package com.example.dsmpokedex
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import com.bumptech.glide.Glide
 import com.example.dsmpokedex.databinding.CardViewPokeBinding
 
 class CardViewPoke @JvmOverloads constructor(
@@ -28,8 +30,10 @@ class CardViewPoke @JvmOverloads constructor(
         binding.pokemonSecondType.text = sType
     }
 
-    fun setPokeImage(image: Drawable) {
-        binding.pokemonImg.setImageDrawable(image)
+    fun setPokeImage(url: String) {
+        Glide.with(context)
+            .load(url)
+            .into(binding.pokemonImg)
     }
 
 
