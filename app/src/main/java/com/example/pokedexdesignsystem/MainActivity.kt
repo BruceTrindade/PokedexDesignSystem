@@ -12,7 +12,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.dsmpokedex.PokeBallBackground
 import com.example.pokedexdesignsystem.ui.theme.PokedexDesignSystemTheme
 
 class MainActivity : ComponentActivity() {
@@ -31,7 +30,6 @@ class MainActivity : ComponentActivity() {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Greeting("Android")
-                        PokeBallBackground(text = "Pikachu")
                     }
                 }
             }
