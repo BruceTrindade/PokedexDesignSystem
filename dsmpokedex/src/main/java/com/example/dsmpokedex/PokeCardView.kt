@@ -1,6 +1,7 @@
 package com.example.dsmpokedex
 
 import android.content.Context
+import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
@@ -34,15 +35,31 @@ class CardViewPoke @JvmOverloads constructor(
             .into(binding.pokemonImg)
     }
 
-    fun setPokeballBackground(color: Int) {
-        binding.pokeCard.setBackgroundColor(color)
+    fun setColors(primaryColor: Int, secondColor: Int) {
+       cardViewBackground(primaryColor)
     }
 
-    fun setPokemonTypeColor(color: Int) {
+    private fun setPokemonTypeColor(color: Int) {
         binding.pokemonType.setBackgroundColor(color)
     }
 
-    fun setPokemonSecondTypeColor(color: Int) {
+    private fun setPokemonSecondTypeColor(color: Int) {
         binding.pokemonSecondType.setBackgroundColor(color)
     }
+
+    private fun cardViewBackground(secondColor: Int) {
+        val primaryColor = resources.getColor(R.color.white)
+        val drawable = GradientDrawable().apply {
+            colors = intArrayOf(
+                primaryColor,
+                secondColor
+            )
+            orientation = GradientDrawable.Orientation.BOTTOM_TOP
+            gradientType = GradientDrawable.LINEAR_GRADIENT
+            shape = GradientDrawable.RECTANGLE
+            cornerRadius = 24f
+        }
+        binding.pokeCard.background = drawable
+    }
+
 }
