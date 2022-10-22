@@ -35,14 +35,14 @@ class CardViewPoke @JvmOverloads constructor(
     }
 
     fun setPokeballBackground(color: Int) {
-        binding.pokeCard.background.setTint(color)
+        binding.pokeCard.setBackgroundColor(color)
     }
 
     fun setPokemonTypeColor(color: Int) {
-        binding.pokemonType.background.setTint(color)
+        binding.pokemonType.setBackgroundColor(color)
     }
 
     fun setPokemonSecondTypeColor(color: Int) {
-        binding.pokemonSecondType.background.setTint(color)
+        binding.pokemonSecondType.setBackgroundColor(color)
     }
 }
