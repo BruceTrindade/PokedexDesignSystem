@@ -1,8 +1,6 @@
 package com.example.dsmpokedex
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
@@ -36,6 +34,15 @@ class CardViewPoke @JvmOverloads constructor(
             .into(binding.pokemonImg)
     }
 
+    fun setPokeballBackground(color: Int) {
+        binding.pokeCard.background.setTint(color)
+    }
 
+    fun setPokemonTypeColor(color: Int) {
+        binding.pokemonType.background.setTint(color)
+    }
 
+    fun setPokemonSecondTypeColor(color: Int) {
+        binding.pokemonSecondType.background.setTint(color)
+    }
 }
