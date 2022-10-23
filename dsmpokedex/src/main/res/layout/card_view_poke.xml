@@ -28,15 +28,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                        <ImageView
-                            android:id="@+id/pokemon_img"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:src="@drawable/charmander"
-                            android:layout_marginStart="16dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
-
                         <TextView
                             android:id="@+id/pokemon_name"
                             android:layout_width="wrap_content"
@@ -75,6 +66,15 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/pokemon_type"
                             tools:text="Fire" />
+
+                        <ImageView
+                            android:id="@+id/pokemon_img"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:src="@drawable/charmander"
+                            android:layout_marginStart="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
