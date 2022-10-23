@@ -1,10 +1,13 @@
 package com.example.dsmpokedex
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.FrameLayout
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.dsmpokedex.databinding.CardViewPokeBinding
 
@@ -26,7 +29,13 @@ class CardViewPoke @JvmOverloads constructor(
     }
 
     fun setPokeStype(sType: String) {
-        binding.pokemonSecondType.text = sType
+        binding.pokemonSecondType.apply {
+            if (sType.isEmpty()) this.visibility = View.GONE
+            else {
+                this.visibility = View.VISIBLE
+                this.text = sType
+            }
+        }
     }
 
     fun setPokeImage(url: String) {
@@ -36,15 +45,21 @@ class CardViewPoke @JvmOverloads constructor(
     }
 
     fun setColors(primaryColor: Int, secondColor: Int) {
-       cardViewBackground(primaryColor)
+        cardViewBackground(primaryColor)
+        setPokemonTypeColor(primaryColor)
+        setPokemonSecondTypeColor(secondColor)
     }
 
     private fun setPokemonTypeColor(color: Int) {
-        binding.pokemonType.setBackgroundColor(color)
+        binding.pokemonType.chipBackgroundColor = ColorStateList.valueOf(
+            ContextCompat.getColor(context, color)
+        )
     }
 
     private fun setPokemonSecondTypeColor(color: Int) {
-        binding.pokemonSecondType.setBackgroundColor(color)
+        binding.pokemonSecondType.chipBackgroundColor = ColorStateList.valueOf(
+            ContextCompat.getColor(context, color)
+        )
     }
 
     private fun cardViewBackground(secondColor: Int) {
@@ -61,5 +76,4 @@ class CardViewPoke @JvmOverloads constructor(
         }
         binding.pokeCard.background = drawable
     }
-
 }
