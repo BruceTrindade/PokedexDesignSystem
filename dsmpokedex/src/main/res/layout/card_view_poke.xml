@@ -26,7 +26,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
 
                         <TextView
                             android:id="@+id/pokemon_name"
@@ -50,6 +50,7 @@
                             android:textStyle="bold"
                             android:layout_marginStart="8dp"
                             android:layout_marginEnd="12dp"
+                            android:layout_marginTop="48dp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/pokemon_name"
                             tools:text="Fire" />
@@ -64,7 +65,7 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginEnd="12dp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/pokemon_type"
+                            app:layout_constraintBottom_toTopOf="@id/pokemon_type"
                             tools:text="Fire" />
 
                         <ImageView
