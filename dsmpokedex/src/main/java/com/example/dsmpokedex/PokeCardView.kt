@@ -7,6 +7,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.dsmpokedex.databinding.CardViewPokeBinding
@@ -51,11 +52,11 @@ class CardViewPoke @JvmOverloads constructor(
     }
 
     private fun setPokemonTypeColor(color: Int) {
-        binding.pokemonType.setChipBackgroundColorResource(color)
+        binding.pokemonType.chipBackgroundColor = ColorStateList.valueOf(resources.getColor(color))
     }
 
     private fun setPokemonSecondTypeColor(color: Int) {
-        binding.pokemonSecondType.setChipBackgroundColorResource(color)
+        binding.pokemonSecondType.chipBackgroundColor = ColorStateList.valueOf(resources.getColor(color))
     }
 
     private fun cardViewBackground(secondColor: Int) {
