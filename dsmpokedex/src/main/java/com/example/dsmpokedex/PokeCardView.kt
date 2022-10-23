@@ -51,15 +51,11 @@ class CardViewPoke @JvmOverloads constructor(
     }
 
     private fun setPokemonTypeColor(color: Int) {
-        binding.pokemonType.chipBackgroundColor = ColorStateList.valueOf(
-            ContextCompat.getColor(context, color)
-        )
+        binding.pokemonType.setChipBackgroundColorResource(color)
     }
 
     private fun setPokemonSecondTypeColor(color: Int) {
-        binding.pokemonSecondType.chipBackgroundColor = ColorStateList.valueOf(
-            ContextCompat.getColor(context, color)
-        )
+        binding.pokemonSecondType.setChipBackgroundColorResource(color)
     }
 
     private fun cardViewBackground(secondColor: Int) {
