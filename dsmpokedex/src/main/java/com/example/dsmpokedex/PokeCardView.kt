@@ -64,7 +64,7 @@ class CardViewPoke @JvmOverloads constructor(
         val drawable = GradientDrawable().apply {
             colors = intArrayOf(
                 primaryColor,
-                secondColor
+                resources.getColor(secondColor)
             )
             orientation = GradientDrawable.Orientation.BOTTOM_TOP
             gradientType = GradientDrawable.LINEAR_GRADIENT
