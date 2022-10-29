@@ -16,7 +16,7 @@ val dotSize = 24.dp // made it bigger for demo
 val delayUnit = 140 // you can change delay to change animation speed
 
 @Composable
-fun DotsTyping() {
+fun PokeballLoading() {
     val maxOffset = 25f
 
     @Composable
@@ -69,5 +69,5 @@ fun DotsTyping() {
 @Preview(showBackground = true)
 @Composable
 fun DotsPreview() = MaterialTheme {
-    DotsTyping()
+    PokeballLoading()
 }

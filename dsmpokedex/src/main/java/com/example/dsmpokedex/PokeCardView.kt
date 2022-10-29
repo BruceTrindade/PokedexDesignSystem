@@ -7,8 +7,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.dsmpokedex.databinding.CardViewPokeBinding
 
@@ -25,8 +23,14 @@ class CardViewPoke @JvmOverloads constructor(
         binding.pokemonName.text = text
     }
 
+    fun setCompose(type: String) {
+        binding.pokemonType.setContent {
+            PokeChips(icon = type, text = type)
+        }
+    }
+
     fun setPokeType(type: String) {
-        binding.pokemonType.text = type
+       setCompose(type)
     }
 
     fun setPokeStype(sType: String) {
@@ -52,7 +56,7 @@ class CardViewPoke @JvmOverloads constructor(
     }
 
     private fun setPokemonTypeColor(color: Int) {
-        binding.pokemonType.chipBackgroundColor = ColorStateList.valueOf(resources.getColor(color))
+      //  binding.pokemonType.chipBackgroundColor = ColorStateList.valueOf(resources.getColor(color))
     }
 
     private fun setPokemonSecondTypeColor(color: Int) {
@@ -60,10 +64,8 @@ class CardViewPoke @JvmOverloads constructor(
     }
 
     private fun cardViewBackground(secondColor: Int) {
-        val primaryColor = resources.getColor(R.color.white)
         val drawable = GradientDrawable().apply {
             colors = intArrayOf(
-                primaryColor,
                 resources.getColor(secondColor)
             )
             orientation = GradientDrawable.Orientation.BOTTOM_TOP
