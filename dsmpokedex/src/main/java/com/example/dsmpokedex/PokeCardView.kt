@@ -7,8 +7,13 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.dsmpokedex.databinding.CardViewPokeBinding
+import com.example.dsmpokedex.util.PokemonTypesColors
+import com.example.dsmpokedex.util.PokemonTypesColors.getTypeColor
+import java.security.Provider
 
 class CardViewPoke @JvmOverloads constructor(
     context: Context,
@@ -23,24 +28,27 @@ class CardViewPoke @JvmOverloads constructor(
         binding.pokemonName.text = text
     }
 
-    fun setCompose(type: String) {
+    fun setCompose(type: String, pColor: Int, sColor: Int) {
+
+        val secondColor = resources.getColor(sColor)
+        val primaryColor = resources.getColor(PokemonTypesColors.getTypeColor(type))
+
         binding.pokemonType.setContent {
-            PokeChips(icon = type, text = type)
+            PokeChips(icon = type, text = type, primaryColor = primaryColor)
         }
+
+        binding.pokemonSecondType.setContent {
+            PokeChips(icon = type, text = type, secondColor = secondColor)
+        }
+
     }
 
-    fun setPokeType(type: String) {
-       setCompose(type)
+    fun setPokeType(type: String, primaryColor: Int) {
+       setCompose(type, primaryColor)
     }
 
-    fun setPokeStype(sType: String) {
-        binding.pokemonSecondType.apply {
-            if (sType.isEmpty()) this.visibility = View.GONE
-            else {
-                this.visibility = View.VISIBLE
-                this.text = sType
-            }
-        }
+    fun setPokeStype(sType: String, secondColor: Int) {
+        setCompose(sType, secondColor)
     }
 
     fun setPokeImage(url: String) {
@@ -53,10 +61,11 @@ class CardViewPoke @JvmOverloads constructor(
         cardViewBackground(primaryColor)
         setPokemonTypeColor(primaryColor)
         setPokemonSecondTypeColor(secondColor)
+        setPokemonTypeColor(primaryColor)
     }
 
-    private fun setPokemonTypeColor(color: Int) {
-      //  binding.pokemonType.chipBackgroundColor = ColorStateList.valueOf(resources.getColor(color))
+    private fun setPokemonTypeColor(color: Int): Int {
+        return color
     }
 
     private fun setPokemonSecondTypeColor(color: Int) {
