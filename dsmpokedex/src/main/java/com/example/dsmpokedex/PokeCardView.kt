@@ -1,19 +1,13 @@
 package com.example.dsmpokedex
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.FrameLayout
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.dsmpokedex.databinding.CardViewPokeBinding
-import com.example.dsmpokedex.util.PokemonTypesColors
 import com.example.dsmpokedex.util.PokemonTypesColors.getTypeColor
-import java.security.Provider
 
 class CardViewPoke @JvmOverloads constructor(
     context: Context,
@@ -28,10 +22,9 @@ class CardViewPoke @JvmOverloads constructor(
         binding.pokemonName.text = text
     }
 
-    fun setCompose(type: String, pColor: Int, sColor: Int) {
-
-        val secondColor = resources.getColor(sColor)
-        val primaryColor = resources.getColor(PokemonTypesColors.getTypeColor(type))
+    fun setCompose(type: String) {
+        val secondColor = resources.getColor(getTypeColor(type))
+        val primaryColor = resources.getColor(getTypeColor(type))
 
         binding.pokemonType.setContent {
             PokeChips(icon = type, text = type, primaryColor = primaryColor)
@@ -40,15 +33,14 @@ class CardViewPoke @JvmOverloads constructor(
         binding.pokemonSecondType.setContent {
             PokeChips(icon = type, text = type, secondColor = secondColor)
         }
-
     }
 
-    fun setPokeType(type: String, primaryColor: Int) {
-       setCompose(type, primaryColor)
+    fun setPokeType(type: String) {
+        setCompose(type)
     }
 
-    fun setPokeStype(sType: String, secondColor: Int) {
-        setCompose(sType, secondColor)
+    fun setPokeStype(sType: String) {
+        setCompose(sType)
     }
 
     fun setPokeImage(url: String) {
@@ -69,7 +61,7 @@ class CardViewPoke @JvmOverloads constructor(
     }
 
     private fun setPokemonSecondTypeColor(color: Int) {
-        binding.pokemonSecondType.chipBackgroundColor = ColorStateList.valueOf(resources.getColor(color))
+        //  binding.pokemonSecondType.chipBackgroundColor = ColorStateList.valueOf(resources.getColor(color))
     }
 
     private fun cardViewBackground(secondColor: Int) {
