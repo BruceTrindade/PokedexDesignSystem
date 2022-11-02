@@ -23,7 +23,7 @@ class CardViewPoke @JvmOverloads constructor(
         binding.pokemonName.text = text
     }
 
-    fun setCompose(type: String, sType: String = "") {
+    fun setCompose(type: String) {
         val color = resources.getColor(getTypeColor(type))
 
         binding.pokemonType.setContent {
@@ -31,23 +31,36 @@ class CardViewPoke @JvmOverloads constructor(
         }
 
         binding.pokemonSecondType.apply {
-            if (sType.isEmpty()) {
+            if (type.isEmpty()) {
                 this.visibility = View.GONE
             } else {
                 this.visibility = View.VISIBLE
                 setContent {
-                    PokeChips(icon = type, text = sType, color)
+                    PokeChips(icon = type, text = type, color)
                 }
             }
         }
     }
 
     fun setPokeType(type: String) {
-        setCompose(type)
+        val color = resources.getColor(getTypeColor(type))
+        binding.pokemonType.setContent {
+            PokeChips(icon = type, text = type, primaryColor = color)
+        }
     }
 
     fun setPokeStype(sType: String) {
-        setCompose(sType)
+        val color = resources.getColor(getTypeColor(sType))
+        binding.pokemonSecondType.apply {
+            if (sType.isEmpty()) {
+                this.visibility = View.GONE
+            } else {
+                this.visibility = View.VISIBLE
+                setContent {
+                    PokeChips(icon = sType, text = sType, color)
+                }
+            }
+        }
     }
 
     fun setPokeImage(url: String) {
