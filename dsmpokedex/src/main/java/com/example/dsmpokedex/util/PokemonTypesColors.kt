@@ -1,10 +1,9 @@
 package com.example.dsmpokedex.util
 
-import android.graphics.Color
 import com.example.dsmpokedex.R
 
 object PokemonTypesColors {
-    fun getTypeColor(type: String): Color {
+    fun getTypeColor(type: String): Int {
         return when (type) {
             "grass", "bug" -> R.color.bug_grass
             "water", "fighting", "normal" -> R.color.water_fighting_normal
