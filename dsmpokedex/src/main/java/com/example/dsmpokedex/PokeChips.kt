@@ -8,8 +8,9 @@ import androidx.compose.ui.res.painterResource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PokeChips(icon: String, text: String, primaryColor: Int = R.color.white, secondColor: Int? = null) {
-    val color = secondColor ?: primaryColor
+fun PokeChips(icon: String, text: String, primaryColor: Int = R.color.white) {
+
+    // val color = secondColor ?: primaryColor
 
     val iconPoke =
         when (icon) {
@@ -21,7 +22,7 @@ fun PokeChips(icon: String, text: String, primaryColor: Int = R.color.white, sec
             else -> { null }
         }
 
-    val color1 = Color(color)
+    val color1 = Color(primaryColor)
 
     AssistChip(
         onClick = { /*TODO*/ },

@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.FrameLayout
 import com.bumptech.glide.Glide
 import com.example.dsmpokedex.databinding.CardViewPokeBinding
@@ -22,16 +23,22 @@ class CardViewPoke @JvmOverloads constructor(
         binding.pokemonName.text = text
     }
 
-    fun setCompose(type: String) {
-        val secondColor = resources.getColor(getTypeColor(type))
-        val primaryColor = resources.getColor(getTypeColor(type))
+    fun setCompose(type: String, sType: String = "") {
+        val color = resources.getColor(getTypeColor(type))
 
         binding.pokemonType.setContent {
-            PokeChips(icon = type, text = type, primaryColor = primaryColor)
+            PokeChips(icon = type, text = type, primaryColor = color)
         }
 
-        binding.pokemonSecondType.setContent {
-            PokeChips(icon = type, text = type, secondColor = secondColor)
+        binding.pokemonSecondType.apply {
+            if (sType.isEmpty()) {
+                this.visibility = View.GONE
+            } else {
+                this.visibility = View.VISIBLE
+                setContent {
+                    PokeChips(icon = type, text = sType, color)
+                }
+            }
         }
     }
 
