@@ -23,41 +23,24 @@ class CardViewPoke @JvmOverloads constructor(
         binding.pokemonName.text = text
     }
 
-    fun setCompose(type: String) {
-        val color = resources.getColor(getTypeColor(type))
-
-        binding.pokemonType.setContent {
-            PokeChips(icon = type, text = type, primaryColor = color)
-        }
-
-        binding.pokemonSecondType.apply {
-            if (type.isEmpty()) {
-                this.visibility = View.GONE
-            } else {
-                this.visibility = View.VISIBLE
-                setContent {
-                    PokeChips(icon = type, text = type, color)
-                }
-            }
-        }
-    }
-
     fun setPokeType(type: String) {
         val color = resources.getColor(getTypeColor(type))
+        cardViewBackground(color)
         binding.pokemonType.setContent {
-            PokeChips(icon = type, text = type, primaryColor = color)
+            PokeChips(text = type, primaryColor = color)
         }
     }
 
-    fun setPokeStype(sType: String) {
-        val color = resources.getColor(getTypeColor(sType))
+    fun setPokeSecondType(secondType: String) {
+        val color = resources.getColor(getTypeColor(secondType))
         binding.pokemonSecondType.apply {
-            if (sType.isEmpty()) {
+            if (secondType.isEmpty()) {
                 this.visibility = View.GONE
             } else {
                 this.visibility = View.VISIBLE
+                cardViewBackground(color)
                 setContent {
-                    PokeChips(icon = sType, text = sType, color)
+                    PokeChips(text = secondType, color)
                 }
             }
         }
@@ -69,26 +52,11 @@ class CardViewPoke @JvmOverloads constructor(
             .into(binding.pokemonImg)
     }
 
-    fun setColors(primaryColor: Int, secondColor: Int) {
-        cardViewBackground(primaryColor)
-        setPokemonTypeColor(primaryColor)
-        setPokemonSecondTypeColor(secondColor)
-        setPokemonTypeColor(primaryColor)
-    }
-
-    private fun setPokemonTypeColor(color: Int): Int {
-        return color
-    }
-
-    private fun setPokemonSecondTypeColor(color: Int) {
-        //  binding.pokemonSecondType.chipBackgroundColor = ColorStateList.valueOf(resources.getColor(color))
-    }
-
-    private fun cardViewBackground(secondColor: Int) {
+    private fun cardViewBackground(color: Int) {
         val drawable = GradientDrawable().apply {
             colors = intArrayOf(
-                resources.getColor(secondColor),
-                resources.getColor(secondColor)
+                resources.getColor(color),
+                resources.getColor(color)
             )
             orientation = GradientDrawable.Orientation.BOTTOM_TOP
             gradientType = GradientDrawable.LINEAR_GRADIENT

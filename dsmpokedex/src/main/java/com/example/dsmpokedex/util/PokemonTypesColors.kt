@@ -5,18 +5,18 @@ import com.example.dsmpokedex.R
 object PokemonTypesColors {
     fun getTypeColor(type: String): Int {
         return when (type) {
-            "grass", "bug" -> R.color.bug_grass
-            "water", "fighting", "normal" -> R.color.water_fighting_normal
-            "poison", "ghost" -> R.color.poison_ghost
-            "flying" -> R.color.flying
-            "ground", "rock" -> R.color.rock_ground
-            "steel" -> R.color.steel
-            "fire" -> R.color.fire
-            "electric, psychic" -> R.color.electric_psychic
-            "ice" -> R.color.ice
-            "dragon" -> R.color.dragon
-            "fairy" -> R.color.fairy
-            "dark" -> R.color.dark
+            "Grass", "Bug" -> R.color.bug_grass
+            "Water", "Fighting", "Normal" -> R.color.water_fighting_normal
+            "Poison", "Ghost" -> R.color.poison_ghost
+            "Flying" -> R.color.flying
+            "Ground", "Rock" -> R.color.rock_ground
+            "Steel" -> R.color.steel
+            "Fire" -> R.color.fire
+            "Electric", "Psychic" -> R.color.electric_psychic
+            "Ice" -> R.color.ice
+            "Dragon" -> R.color.dragon
+            "Fairy" -> R.color.fairy
+            "Dark" -> R.color.dark
             else -> R.color.dragon
         }
     }
