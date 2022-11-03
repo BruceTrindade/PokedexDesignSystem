@@ -38,7 +38,6 @@ class CardViewPoke @JvmOverloads constructor(
                 this.visibility = View.GONE
             } else {
                 this.visibility = View.VISIBLE
-                cardViewBackground(color)
                 setContent {
                     PokeChips(text = secondType, color)
                 }
@@ -55,8 +54,8 @@ class CardViewPoke @JvmOverloads constructor(
     private fun cardViewBackground(color: Int) {
         val drawable = GradientDrawable().apply {
             colors = intArrayOf(
-                resources.getColor(color),
-                resources.getColor(color)
+                color,
+                color
             )
             orientation = GradientDrawable.Orientation.BOTTOM_TOP
             gradientType = GradientDrawable.LINEAR_GRADIENT
