@@ -19,7 +19,7 @@ fun PokeChips(text: String, primaryColor: Int = R.color.white) {
     AssistChip(
         onClick = { /*TODO*/ },
         label = { Text(text) },
-        modifier = Modifier.height(24.dp),
+        modifier = Modifier.height(20.dp),
         shape = RoundedCornerShape(32.dp),
         colors = AssistChipDefaults.assistChipColors(color)
 
