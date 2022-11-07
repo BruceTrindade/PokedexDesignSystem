@@ -62,7 +62,7 @@
                             android:layout_marginTop="8dp"
                             android:layout_marginEnd="12dp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintBottom_toTopOf="@id/pokemon_type"
+                            app:layout_constraintTop_toBottomOf="@id/pokemon_type"
                             tools:text="Fire" />
 
                         <ImageView
