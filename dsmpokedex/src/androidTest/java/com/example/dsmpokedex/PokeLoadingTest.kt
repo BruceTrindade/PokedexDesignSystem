@@ -2,9 +2,6 @@ package com.example.dsmpokedex
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4

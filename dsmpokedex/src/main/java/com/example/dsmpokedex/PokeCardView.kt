@@ -20,13 +20,17 @@ class CardViewPoke @JvmOverloads constructor(
         .inflate(LayoutInflater.from(context), this, true)
 
     fun setPokeName(text: String) {
+
         binding.pokemonName.text = text
     }
 
     fun setPokeType(type: String) {
         val color = resources.getColor(getTypeColor(type))
+
         cardViewBackground(color)
+
         binding.pokemonType.setContent {
+
             PokeChips(text = type, primaryColor = color)
         }
     }
