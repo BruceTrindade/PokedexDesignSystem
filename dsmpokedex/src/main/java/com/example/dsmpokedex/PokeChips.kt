@@ -2,10 +2,9 @@ package com.example.dsmpokedex
 
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.AssistChipDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -14,25 +13,23 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PokeChips(text: String, primaryColor: Int = R.color.white) {
+fun PokeChips(text: String, primaryColor: Int = android.graphics.Color.WHITE) {
     val color = Color(primaryColor)
 
     AssistChip(
-        onClick = { /*TODO*/ },
+        onClick = { /* no-op */ },
         label = { Text(text) },
         modifier = Modifier
             .testTag("Chips Test Tag")
             .height(20.dp),
         shape = RoundedCornerShape(32.dp),
-        colors = AssistChipDefaults.assistChipColors(color)
-
+        colors = AssistChipDefaults.assistChipColors(containerColor = color),
     )
 }
 
 @Preview(showBackground = true)
 @Composable
-fun ChipsPreview() = MaterialTheme {
+private fun ChipsPreview() = MaterialTheme {
     PokeChips("Fire")
 }

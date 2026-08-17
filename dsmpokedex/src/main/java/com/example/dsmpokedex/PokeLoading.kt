@@ -1,8 +1,18 @@
 package com.example.dsmpokedex
 
-import androidx.compose.animation.core.*
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.keyframes
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -32,7 +42,7 @@ fun PokeballLoading() {
             )
     )
 
-    val infiniteTransition = rememberInfiniteTransition()
+    val infiniteTransition = rememberInfiniteTransition(label = "pokeball")
 
     @Composable
     fun animateOffsetWithDelay(delay: Int) = infiniteTransition.animateFloat(
@@ -45,7 +55,8 @@ fun PokeballLoading() {
                 maxOffset at delay + delayUnit with LinearEasing
                 0f at delay + delayUnit * 2
             }
-        )
+        ),
+        label = "offset"
     )
 
     val offset1 by animateOffsetWithDelay(0)
@@ -71,6 +82,6 @@ fun PokeballLoading() {
 
 @Preview(showBackground = true)
 @Composable
-fun DotsPreview() = MaterialTheme {
+private fun DotsPreview() = MaterialTheme {
     PokeballLoading()
 }
