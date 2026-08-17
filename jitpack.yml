@@ -1,4 +1,4 @@
+# JitPack builds the published SDK from a git tag. The project now targets
+# JDK 17 (AGP 7.4.2 / compileSdk 34), so pin the JitPack build JDK to 17.
 jdk:
-  - openjdk11
-before_install:
-  - ./scripts/prepareJitpackEnvironment.sh
+  - openjdk17

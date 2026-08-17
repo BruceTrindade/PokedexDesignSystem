@@ -6,53 +6,52 @@ on:
       - master
     tags:
       - "v*"
+  pull_request:
+    branches:
+      - master
 
 jobs:
-  apk:
-    name: Generate APK
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2.4.0
-      - name: Setup JDK
-        uses: actions/setup-java@v2.5.0
-        with:
-          distribution: temurin
-          java-version: "11"
-      - name: Set execution flag for gradlew
-        run: chmod +x gradlew
-      - name: Build APK
-        run: bash ./gradlew assembleDebug --stacktrace
-      - name: Upload APK
-        uses: actions/upload-artifact@v1
-        with:
-          name: apk
-          path: app/build/outputs/apk/debug/app-debug.apk
-
-  release:
-    name: Release APK
-    needs: apk
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Download APK from build
-        uses: actions/download-artifact@v1
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup JDK
+        uses: actions/setup-java@v4
         with:
-          name: apk
+          distribution: temurin
+          java-version: "17"
+          cache: gradle
+      - name: Set execution flag for gradlew
+        run: chmod +x gradlew
+      - name: Build library AAR and sample APK
+        run: ./gradlew :dsmpokedex:assembleRelease :app:assembleDebug --stacktrace
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifacts
+          path: |
+            dsmpokedex/build/outputs/aar/dsmpokedex-release.aar
+            app/build/outputs/apk/debug/app-debug.apk
+
+  release:
+    name: Release
+    needs: build
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: artifacts
       - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.run_number }}
-          release_name: ${{ github.event.repository.name }} v${{ github.run_number }}
-      - name: Upload Release APK
-        id: upload_release_asset
-        uses: actions/upload-release-asset@v1.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: apk/app-debug.apk
-          asset_name: ${{ github.event.repository.name }}.apk
-          asset_content_type: application/zip
+          name: ${{ github.event.repository.name }} v${{ github.run_number }}
+          files: |
+            dsmpokedex-release.aar
+            app-debug.apk
